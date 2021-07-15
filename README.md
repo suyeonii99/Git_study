@@ -59,3 +59,31 @@ Git 공부용 📝
   > clone을 한 경우에는 원격 저장소를 가져 온 것이므로 remote 명령어로 원격 저장소 지정 필요 없음.
 * git pull: gitlab 서버 상의 최신 commit이 생겼을 경우 내 컴퓨터로 가져오는 명령어.
   > gitlab history 상의 commit 들이 서로 다를 경우 충돌이 일어나므로 반드시 최신 commit이 모두 반영되었는지 확인 후 pull.
+
+
+📍 git 심화
+
+✅ 실무 프로젝트 진행 방식
+❗️ fork: 프로젝트의 완성도를 위해 원본 프로젝트 아래에 개인 개발자의 프로젝트 copied(복제)본 생성.
+     > git clone 하여 내 컴퓨터에 깃랩 서버를 가져옴.
+     > 작업(commit)하여 git push 하면 원본 프로젝트가 아닌 copied 프로젝트에 올라감.
+     > 이후 깃랩에서 나의 복제본 프로젝트에서 원본 프로젝트로 merge request를 보냄 (새로운 작업 확인 후 반영을 위함.)
+     > merge request 에 대한 글을 남기고 싶다면 discussion을 통해 글 남기기.
+❗️ branch : 특정 커밋을 가리키는 포인터 > 하나 이상의 개발 흐름을 생성하기 위해 브랜치 사용. > master: git 사용시 기본 설정되는 브랜치, 실제 서비스 배포를 목적으로 완성된 커밋만 둠.
+
+  HEAD -> master (헤드는 브랜치를 통해 커밋을 가리킴.)
+  origin/master(gitlab 서버의 master 브랜치를 가리킴.)
+
+* git branch {브랜치명}: 브랜치 생성 명령어.
+* git checkout {브랜치명}: HEAD가 가리키고자 하는 브랜치를 지정하는 명령어.
+* git log --all --graph: HEAD가 가리키는 branch 뿐만 아니라 모든 branch에 대한 commit 기록을 그래프 형식으로 보여주는 명령어.
+
+✅ 협업시 중요한 명령어: (merge)
+* Head 가 가리킬 브랜치로 이동 (git checkout {브랜치명})
+* git merge {합칠 브랜치명}: 현재 head가 가리키는 브랜치에 합칠 브랜치의 모든 작업을 합히는 명령어.
+  - 흐름의 분기가 없을 경우: Fast-forward merge: 새로운 커밋을 만들지 않고 브랜치가 당겨져 옮.
+  - 흐름의 분기가 있을 경우: 새로운 merge commit을 만듦.
+
+
+* Git push -u origin master: master branch를 origin이 의미하는 깃랩 서버의 프로젝트에 올리는 명령어. > -u 옵션 (= —set-upstream): 내 컴퓨터의 master 브랜치가 깃랩 서버의 master 브랜치를 바라보게 하는 명령어.   > 이후에는 작성할 필요 X
+* Git push —force: 업로드를 강제함.
